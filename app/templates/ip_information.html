@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import 'macros.html' as macros %}
+
+{%block title %}
+    Bienvenido a 
+    {{super()}}
+{% endblock %}
+
+{%block content%}
+    {% if user_ip %}
+        
+        <h1> Hola desde el template {{user_ip}} </h1>
+
+    {% else %}
+        <a href="{{ url_for('index') }}">Crear Cookie</a>
+
+    {% endif %}
+
+    <ul>
+        {% for item in items %}
+           {{macros.render_items(item)}}
+        {% endfor %}
+    </ul>
+{%endblock%}
+

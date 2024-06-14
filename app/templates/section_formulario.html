@@ -1,0 +1,109 @@
+<div class="contentForm">
+    <h1 class="seccion_titulos">Formulario de Contacto</h1>
+
+    <form class="contacto-formulario" method="get">
+      <div class="mb-3">
+        <label for="tipoContacto" class="form-label"
+          >Tipo de contacto</label
+        >
+        <select name="contactos" class="form-select" id="tipoContacto">
+          <option value="consulta-general">General</option>
+          <option value="denuncia">Denuncia</option>
+          <option value="solicitud">Solicitud</option>
+          <option value="servicio">Publicar un servicio</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <input
+          type="text"
+          name="nombre"
+          class="form-control"
+          id="nombre"
+          maxlength="100"
+          placeholder="Ingrese su nombre"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido:</label>
+        <input
+          type="text"
+          name="apellido"
+          class="form-control"
+          id="apellido"
+          maxlength="100"
+          placeholder="Ingrese su apellido"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono:</label>
+        <input
+          type="tel"
+          name="telefono"
+          class="form-control"
+          id="telefono"
+          placeholder="Ingrese su numero de telefono"
+        >
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo electrónico:</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          id="email"
+          value=""
+          placeholder="Ingrese su correo electrónico"
+        >
+      </div>
+      <div class="mb-3">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="tipoUsuario"
+            id="vecino"
+            value="vecino"
+            checked
+          >
+          <label class="form-check-label" for="vecino"> Vecino </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="tipoUsuario"
+            id="turista"
+            value="turista"
+          >
+          <label class="form-check-label" for="turista"> Turista </label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="newsletter"
+            name="newsletter"
+          >
+          <label class="form-check-label" for="newsletter"
+            >Recibir Noticias de la Localidad</label
+          >
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="mensaje" class="form-label">Mensaje:</label>
+        <textarea
+          name="mensaje"
+          class="form-control"
+          id="mensaje"
+          rows="5"
+        ></textarea>
+      </div>
+      <div class="mb-3">
+        <button type="reset" class="btn btn-secondary">Borrar</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+    </form>
+  </div>
