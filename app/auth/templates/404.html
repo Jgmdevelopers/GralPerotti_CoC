@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{super()}}
+    404 Endpoint / url no existe en nuestra plataforma
+{% endblock %}
+
+{% block content %}
+    <div class="container"> 
+        <h3>Lo siento, este recurso no existe</h3>
+        <span class="label laber-success"> <a href="{{url_for('auth.log_in_user')}}"> Ir a la pagina de ingreso</a> </span>
+    </div> 
+{% endblock %}
+
