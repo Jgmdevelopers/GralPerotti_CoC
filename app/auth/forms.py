@@ -5,8 +5,8 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 from app.auth.models import User
 
-def email_exists():
-     if User.query.filter_by(email=field.data).first():
+def email_exists(form, field):
+    if User.query.filter_by(email=field.data).first():
         raise ValidationError('Email ya registrado. Usa uno diferente.')
 
 def username_exists(form, field):
@@ -26,14 +26,13 @@ class RegistrationForm(FlaskForm):
     ])
     password = PasswordField("Password", validators=[
         DataRequired(), 
-        EqualTo("confirm", message="Contraseña no válida")
+        EqualTo("confirm", message="Las contraseñas deben coincidir")
     ])
-    confirm = PasswordField("Confirm", validators=[DataRequired()])
+    confirm = PasswordField("Confirm Password", validators=[DataRequired()])
     submit = SubmitField("Registrar")
     
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
-    email = StringField("E-mail", validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     stay_loggedin = BooleanField("Recordarme")
     submit = SubmitField('Login')
