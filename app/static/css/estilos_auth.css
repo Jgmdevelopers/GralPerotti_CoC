@@ -1,0 +1,102 @@
+
+
+    .containerForm {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+    }
+    .login-box {
+        width: 320px;
+        height: 420px;
+        background: rgba(0, 0, 0, 0.8); /* Fondo con transparencia */
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+        padding: 70px 30px;
+        border-radius: 5%;
+    }
+    .login-box .avatar {
+       
+        height: 100px;
+       
+        position: absolute;
+        top: -50px;
+        object-fit: cover;
+    }
+    .login-box h4 {
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        font-size: 22px;
+    }
+    .login-box label {
+        margin-bottom: 0;
+        color: #fff;
+    }
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: #fff;
+        font-size: 16px;
+        width: 100%;
+    }
+    .login-box input[type="submit"] {
+        border: none;
+        outline: none;
+        height: 40px;
+        background: #b80f22;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 20px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .login-box a {
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 20px;
+        color: darkgrey;
+    }
+    .login-box a:hover {
+        color: #fff;
+    }
+    /* Estilos para los mensajes de error */
+    .error-message {
+        font-size: 14px;
+        color: #dc3545; /* Color rojo */
+        margin-top: 5px;
+    }
+    .form-login{
+        position: relative;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        width: 100vh;
+        height: 110vh;
+    }
+    .forgot-password-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+        color: #007bff; /* Cambia el color del texto del enlace según tu diseño */
+        text-decoration: none; /* Elimina la subrayado predeterminado del enlace */
+    }
+
+    .forgot-password-link span {
+        display: block;
+        font-size: 14px; /* Tamaño de fuente del texto adicional */
+        color: #666; /* Color del texto adicional */
+        margin-top: 5px; /* Espaciado superior entre el enlace y el texto adicional */
+    }
+

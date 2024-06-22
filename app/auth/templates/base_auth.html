@@ -4,9 +4,10 @@
     {% block head %}
 <head>
     <link rel="stylesheet" href="{{url_for('static',filename='css/estilos.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/estilos_auth.css')}}">
     <title>{% block title %} Localidad Gral Perotti {% endblock %}</title>
     <meta charset="UTF-8">
-    <script src="{{url_for('static',filename='js/validation.js')}}"></script>
+      <script src="{{url_for('static',filename='js/validation.js')}}"></script>
     <script src="{{url_for('static',filename='js/app.js')}}"></script>
     <script src="{{url_for('static',filename='js/scroll.js')}}"></script>
     <script src="{{url_for('static',filename='js/carusel.js')}}"></script>
@@ -38,43 +39,16 @@
   
 </head>
 {% endblock head %}
+
 <body>
- 
-    {%block content%}
 
-        {% for message in get_flashed_messages() %}
-            <div>
-                <button type="button" class="close" data-dismiss="alert"></button>
-                {{mesagge}}
-            </div>
-            
-        {% endfor %}
-        
-        <section class="section_inicio" id="inicio">
-            {% include 'section_inicio.html' %}
-        </section> 
+  {%block header%}
+    {% include 'header_auth.html' %}
+  {%endblock%} 
 
-        <section class="section_historia" id="historia">
-            {% include 'section_historia.html' %}
-        </section>
-
-         <section class="section_servicios" id="servicios">
-            {% include 'section_servicios.html' %}
-        </section>
-
-        <section class="section_obras" id="obras">
-            {% include 'section_obras.html' %}
-        </section>
-
-        <section class="section_formulario" id="contacto">
-            {% include 'section_formulario.html' %}
-        </section>
-
-        <div class="footer">
-            {% include 'footer.html' %}
-        </div>
-      
-
-    {%endblock%}    
+  {%block content%}
+    
+  
+  {%endblock%}    
 </body>
 </html>

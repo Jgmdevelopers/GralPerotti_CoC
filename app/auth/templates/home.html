@@ -1,9 +1,91 @@
-{% extends 'base.html'%}
+{% extends "base_auth.html" %}
 
-{% block content%}
-    <div class"container">
-        <h3>Bienvenido</h3>
-        <h4>{{ current_user.username.title()}}</h4>
+{% block title %}
+    Dashboard del Administrador
+{% endblock %}
 
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Dashboard</h1>
+            <div class="card mb-4">
+                <div class="card-header">
+                    Información del Usuario Actual
+                </div>
+                <div class="card-body">
+                    <p><strong>Nombre:</strong> {{ current_user_info.name }}</p>
+                    <p><strong>Username:</strong> {{ current_user_info.username }}</p>
+                    <p><strong>Email:</strong> {{ current_user_info.email }}</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    Lista de Usuarios
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>
+                                    <a href="{{ url_for('auth.edit_user', user_id=user.id) }}" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="{{ url_for('auth.delete_user', user_id=user.id) }}" class="btn btn-danger btn-sm">Eliminar</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    Lista de Imágenes
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Filename</th>
+                                <th>Title</th>
+                                <th>Content</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for image in images %}
+                            <tr>
+                                <td>{{ image.id }}</td>
+                                <td>{{ image.filename }}</td>
+                                <td>{{ image.titulo }}</td>
+                                <td>{{ image.content }}</td>
+                                <td>
+                                    <a href="{{ url_for('auth.edit_image', image_id=image.id) }}" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="{{ url_for('auth.delete_image', image_id=image.id) }}" class="btn btn-danger btn-sm">Eliminar</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
     </div>
-    {%endblock%}
+</div>
+{% endblock %}

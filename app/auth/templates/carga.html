@@ -1,0 +1,45 @@
+{% extends "base_auth.html" %}
+
+{% block title %}Carga de Imagen{% endblock %}
+
+{% block content %}
+
+<style>
+    .form-carga {
+        background-color: #f8f9fa; /* Fondo gris claro */
+        padding: 20px; /* Padding interior */
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra suave */
+        margin-top: 80px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="form-carga">
+                <h3 class="mb-4">Carga de Imagen</h3>
+                <form method="POST" action="{{ url_for('auth.carga') }}" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="imageUpload">Cargar Imagen</label>
+                        <input type="file" class="form-control-file" id="imageUpload" name="image" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="titulo">Titulo para la Imagen</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ingrese el titulo para la imagen" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Texto para la Imagen</label>
+                        <input type="text" class="form-control" id="content" name="content" placeholder="Ingrese el texto para la imagen" required>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary mr-2">Subir Imagen</button>
+                        <a href="#" class="btn btn-danger">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

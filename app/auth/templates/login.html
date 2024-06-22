@@ -4,104 +4,38 @@
     {{ super() }} | Login
 {% endblock %}
 {% block content %}
-<style>
-    .container.form {
-        position: relative;
-        width: 100vw;
-        height: 100%;
-    }
-    .login-box {
-        width: 320px;
-        height: 420px;
-        background: #000;
-        color: #fff;
-        top: 50%;
-        left: 50%;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        box-sizing: border-box;
-        padding: 70px 30px;
-    }
-    .login-box .avatar {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        position: absolute;
-        top: -50px;
-        object-fit: cover;
-    }
-    .login-box h4 {
-        margin: 0;
-        padding: 0 0 20px;
-        text-align: center;
-        font-size: 22px;
-    }
-    .login-box label {
-        margin-bottom: 0;
-        color: #fff;
-    }
-    .login-box input[type="text"],
-    .login-box input[type="password"] {
-        border: none;
-        border-bottom: 1px solid #fff;
-        background: transparent;
-        outline: none;
-        height: 40px;
-        color: #fff;
-        font-size: 16px;
-        width: 100%;
-    }
-    .login-box input[type="submit"] {
-        border: none;
-        outline: none;
-        height: 40px;
-        background: #b80f22;
-        color: #fff;
-        font-size: 18px;
-        border-radius: 20px;
-        cursor: pointer;
-        width: 100%;
-        margin-top: 20px;
-    }
-    .login-box a {
-        text-decoration: none;
-        font-size: 12px;
-        line-height: 20px;
-        color: darkgrey;
-    }
-    .login-box a:hover {
-        color: #fff;
-    }
-    /* Estilos para los mensajes de error */
-    .error-message {
-        font-size: 14px;
-        color: #dc3545; /* Color rojo */
-        margin-top: 5px;
-    }
-</style>
 
-<div class="container form">
-    <div class="login-box">
-        <img class="avatar" src="{{ url_for('static', filename='images/escudo.png') }}" />
-        <h4>Ingrese aquí</h4>
-        <form method="POST" action="{{ url_for('auth.log_in_user') }}">
-            {{ form.hidden_tag() }}
-            <!-- USERNAME -->
-            <div class="form-group">
-                {{ wtf.form_field(form.username) }}
-              
+    {{ super() }} 
+    <div class="containerForm">
+        <div class="form-login">
+            <div class="login-box">
+                <img class="avatar" src="{{ url_for('static', filename='images/escudo.png') }}" />
+                <h4>Ingrese aquí</h4>
+                <form method="POST" action="{{ url_for('auth.log_in_user') }}">
+                    {{ form.hidden_tag() }}
+                    <!-- USERNAME -->
+                    <div class="form-group">
+                        {{ wtf.form_field(form.username) }}
+                        
+                    </div>
+                    <!-- CONTRASEÑA -->
+                    <div class="form-group">
+                        {{ wtf.form_field(form.password) }}
+                        
+                    </div>
+                    <div>{{ wtf.form_field(form.stay_loggedin) }}</div>
+                    <input type="submit" value="Ingresar" class="btn btn-primary" />
+                </form>
+                <a href="#" class="forgot-password-link">
+                    Olvidó su clave?
+                    <span>En caso afirmativo, por favor contacte al administrador.</span>
+                </a>
+                    
+                
             </div>
-            <!-- CONTRASEÑA -->
-            <div class="form-group">
-                {{ wtf.form_field(form.password) }}
-              
-            </div>
-            <div>{{ wtf.form_field(form.stay_loggedin) }}</div>
-            <input type="submit" value="Ingresar" class="btn btn-primary" />
-        </form>
-        <a href="#">Olvidó su clave?</a><br />
-        <a href="#">En caso afirmativo por favor contacte al administrador</a>
+            
+        </div>
     </div>
-</div>
+
 
 {% endblock %}

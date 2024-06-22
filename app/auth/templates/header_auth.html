@@ -1,0 +1,30 @@
+<header id="mainHeader">
+  <div class="nav-bar">
+    <img
+      class="logo"
+      src="{{url_for('static',filename='images/escudo.png')}}"
+      alt="escudo"
+    />
+    <div class="navigation">
+      <div class="nav-items">
+        <!--Estos son los links a las diferentes paginas del site-->
+        <i class="fas fa-times nav-close-btn"></i>
+
+        {% if current_user.is_authenticated %}
+          
+          <a class="M" href="{{ url_for('auth.home')}}">Perfil de Usuario</a>
+          <a class="M" href="{{ url_for('auth.register_user')}}">Registrar usuario</a>
+          <a class="M" href="{{ url_for('auth.obras')}}">Obras</a>
+          <a class="M" href="{{ url_for('auth.log_out_user')}}">Cerrar Sesión</a>
+        
+        {% else %}
+
+          <a href="{{ url_for('index') }}" class="M">Volver al Index</a>
+      
+        {% endif %}
+
+      </div>
+    </div>
+    <i class="nav-menu-btn fas fa-bars"></i>
+  </div>
+</header>

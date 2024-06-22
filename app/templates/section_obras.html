@@ -1,133 +1,51 @@
-<div>
-    <h1 class="seccion_titulos">Obras Públicas</h1>
-  </div>
-  <div class="contenedorTextoFotos">
-    <div class="obras_texto">
-      <p>
-        Desde el inicio de nuestra gestión, nos hemos comprometido con el
-        desarrollo integral de nuestra localidad, invirtiendo en
-        infraestructuras que impulsan el crecimiento económico, social y
-        ambiental.
-      </p>
+<!DOCTYPE html>
+<html lang="en">
 
-      <p>
-        El desarrollo de obras en General Perotti no solo implica la
-        construcción de edificios y calles, sino que representa una
-        inversión en la calidad de vida de nuestros ciudadanos. La mejora de
-        las vías de comunicación, por ejemplo, no solo facilita el
-        desplazamiento diario, sino que también promueve la integración
-        social y el desarrollo comercial. Del mismo modo, la creación de
-        espacios verdes y parques no solo embellece nuestro entorno, sino
-        que fomenta un estilo de vida activo y saludable para todas las
-        edades.
-      </p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obras Públicas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
 
-      <p>
-        Entre las obras realizadas, destacan la construcción del nuevo
-        Hospital Municipal, que brinda atención médica de calidad y
-        accesible a todos los habitantes, así como la ampliación del sistema
-        de transporte público, que ha mejorado la movilidad urbana y
-        reducido la congestión vehicular. Actualmente, nos encontramos en
-        proceso de ejecución de importantes proyectos, como la renovación
-        integral del centro histórico y la construcción de nuevas escuelas y
-        centros culturales.
-      </p>
+<body>
+    <div>
+        <h1 class="seccion_titulos">Obras Públicas</h1>
     </div>
-    <div
-      id="carouselExampleControls"
-      class="carousel slide"
-      data-ride="carousel"
-    >
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="1000">
-          <img
-            src="{{url_for('static',filename='images/casa.jpg')}}"
-            class="img-carousel"
-            alt="Obras_luces"
-          >
-          <div class="carousel-caption">
-            <h5>Obras de Luces LED</h5>
-            <p>
-              Instalación de luces LED en la ciudad para mejorar la
-              iluminación.
-            </p>
+    <div class="contenedorTextoFotos">
+        <div class="obras_texto">
+            <p>Desde el inicio de nuestra gestión, nos hemos comprometido con el desarrollo integral de nuestra localidad, invirtiendo en infraestructuras que impulsan el crecimiento económico, social y ambiental.</p>
+            <p>El desarrollo de obras en General Perotti no solo implica la construcción de edificios y calles, sino que representa una inversión en la calidad de vida de nuestros ciudadanos. La mejora de las vías de comunicación, por ejemplo, no solo facilita el desplazamiento diario, sino que también promueve la integración social y el desarrollo comercial. Del mismo modo, la creación de espacios verdes y parques no solo embellece nuestro entorno, sino que fomenta un estilo de vida activo y saludable para todas las edades.</p>
+            <p>Entre las obras realizadas, destacan la construcción del nuevo Hospital Municipal, que brinda atención médica de calidad y accesible a todos los habitantes, así como la ampliación del sistema de transporte público, que ha mejorado la movilidad urbana y reducido la congestión vehicular. Actualmente, nos encontramos en proceso de ejecución de importantes proyectos, como la renovación integral del centro histórico y la construcción de nuevas escuelas y centros culturales.</p>
+            
           </div>
+
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for image in images %}
+                <div class="carousel-item{% if loop.first %} active{% endif %}">
+                    <img src="{{ url_for('static', filename=image.filepath) }}" class="d-block w-100 img-carousel" alt="{{ image.filename }}">
+                    <div class="carousel-caption">
+                       
+                        <h3>{{ image.titulo }}</h3>
+                        <p>{{ image.content}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <div class="carousel-item" data-bs-interval="2000">
-          <img
-            src="{{url_for('static',filename='images/edificio.jpg')}}"
-            class="img-carousel"
-            alt="bicisendas"
-          >
-          <div class="carousel-caption">
-            <h5>Construcción de Bicisendas</h5>
-            <p>
-              Creación de nuevas bicisendas para fomentar el uso de la
-              bicicleta como medio de transporte.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img
-            src="{{url_for('static',filename='images/muro.jpg')}}"
-            class="img-carousel"
-            alt="obras_bicicletero"
-          >
-          <div class="carousel-caption">
-            <h5>Instalación de Bicicleteros</h5>
-            <p>
-              Colocación de bicicleteros en puntos estratégicos para
-              estacionamiento seguro de bicicletas.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img
-            src="{{url_for('static',filename='images/obra2.jpg')}}"
-            class="img-carousel"
-            alt="obras_bancos"
-          >
-          <div class="carousel-caption">
-            <h5>Renovación de Bancos</h5>
-            <p>
-              Reemplazo de bancos antiguos por nuevos para mayor comodidad
-              de los ciudadanos.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img
-            src="{{url_for('static',filename='images/obra3.jpg')}}"
-            class="img-carousel"
-            alt="obras_veredas"
-          >
-          <div class="carousel-caption">
-            <h5>Mejora de Veredas</h5>
-            <p>
-              Reparación y ampliación de veredas en zonas de alto tránsito
-              peatonal.
-            </p>
-          </div>
-        </div>
-      </div>
-      <!-- Botones de control -->
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleControls"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleControls"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
-  </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

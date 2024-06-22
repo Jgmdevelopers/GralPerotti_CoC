@@ -13,6 +13,7 @@
         {% if current_user.is_authenticated %}
           <a class="M" href="#">Perfil de Usuario</a>
           <a class="M" href="{{ url_for('auth.register_user')}}">Registrar usuario</a>
+          <a class="M" href="{{ url_for('auth.home')}}">Obras</a>
           <a class="M" href="{{ url_for('auth.log_out_user')}}">Cerrar Sesión</a>
         {% else %}
           <a class="M" href="#inicio">Inicio</a>
