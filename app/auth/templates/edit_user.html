@@ -9,19 +9,27 @@
    
     <div class="container mt-4">
         <div class="row">
-            <div class="col-md-6 offset-md-3">
+            <div class="container form">
                 <h1>Editar Usuario</h1>
                 <form method="POST">
+                    {{ form.hidden_tag() }}
+                    
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}">
+                        {{ wtf.form_field(form.username, class="form-control", placeholder="Username") }}
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
+                        {{ wtf.form_field(form.email, class="form-control", placeholder="Email") }}
                     </div>
-                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                    <a href="{{ url_for('auth.home') }}" class="btn btn-secondary">Cancelar</a>
+                    <div class="form-group">
+                        {{ wtf.form_field(form.password, class="form-control", placeholder="New Password (leave blank if not changing)") }}
+                    </div>
+                    <div class="form-group">
+                        {{ wtf.form_field(form.confirm, class="form-control", placeholder="Confirm New Password (leave blank if not changing)") }}
+                    </div>
+                    <div class="form-group d-flex justify-content-between">
+                        {{ wtf.form_field(form.submit, class="btn btn-primary") }}
+                        <a href="{{ url_for('auth.home') }}" class="btn btn-secondary">Cancelar</a>
+                    </div>
                 </form>
             </div>
         </div>

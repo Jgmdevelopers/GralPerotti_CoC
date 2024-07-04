@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 
 
 @auth.route('/register', methods=["GET", "POST"])
-@login_required  
+@login_required
 def register_user():
     form = RegistrationForm()
     
@@ -23,7 +23,11 @@ def register_user():
         flash("¡Registro exitoso!")
         return redirect(url_for("auth.home"))  # Redirige a la página principal u otra página apropiada
     
+    print("Formulario de Registro:", form.data)
+    print("Datos de Sesión:", session)
+    
     return render_template("registration.html", form=form)
+
 
 @auth.route('/login', methods=["GET", "POST"])
 def log_in_user():
@@ -51,13 +55,21 @@ def log_in_user():
 @login_required
 def edit_user(user_id):
     user = User.query.get_or_404(user_id)
-    if request.method == 'POST':
-        user.username = request.form['username']
-        user.email = request.form['email']
+    form = RegistrationForm(obj=user)  # pasar el usuario actual al formulario
+
+    if form.validate_on_submit():
+        if form.username.data != user.username:  # solo validar si el nombre de usuario cambia
+            user.username = form.username.data
+        user.email = form.email.data
+        if form.password.data:  # Si se proporciona una nueva contraseña
+            user.set_password(form.password.data)
         db.session.commit()
         flash("Usuario actualizado exitosamente.", "success")
         return redirect(url_for('auth.home'))
-    return render_template('edit_user.html', user=user)
+
+    form.username.data = user.username
+    form.email.data = user.email
+    return render_template('edit_user.html', form=form, user=user)
 
 @auth.route('/delete_user/<int:user_id>', methods=['GET', 'POST'])
 @login_required
@@ -125,7 +137,6 @@ def carga():
     images = Image.query.all()
     print(images)  
     return render_template('section_obras.html', images=images)
-
 @auth.route('/edit/<int:image_id>', methods=['GET', 'POST'])
 @login_required
 def edit_image(image_id):
@@ -143,7 +154,7 @@ def edit_image(image_id):
                 # Asegurarse de que el nombre de archivo sea seguro
                 filename = secure_filename(new_image.filename)
                 # Guardar el archivo en la carpeta de uploads
-                filepath = os.path.join(auth.config['UPLOAD_FOLDER'], filename)
+                filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
                 new_image.save(filepath)
                 # Actualizar la ruta de la imagen en la base de datos
                 image.filepath = os.path.join('uploads', filename).replace("\\", "/")

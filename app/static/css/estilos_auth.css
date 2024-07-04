@@ -1,11 +1,177 @@
 
+@import url("//fonts.googleapis.com/css?family=Candal");
+
+* {
+    /*font-family: Verdana, Geneva, Tahoma, sans-serif;*/
+    font-family: "Mystery Quest";
+    src: url("mystery-quest.woff2");
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+   
+
+}
+
+HEADER{
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: calc(3rem + 1rem);
+    display: flex;
+    top: 0;
+    background-color: rgb(38, 117, 38); 
+    margin: 2px; 
+    border-radius: 20px;
+    font-size: larger;
+    transition: background-color 0.3s ease;   
+}
+
+BODY {
+    position: absolute;
+    width: 100vw;
+    background-image: url(../images/fotoPlaza.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
 
     .containerForm {
         position: relative;
         display: flex;
         justify-content: center;
-        width: 100vw;
-        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        top: 20px;
+    }
+    .titulo{
+        color: #b80f22;
+    }
+
+    .card{
+       width: 50%;
+       align-items: center;
+    }
+
+    .panel-admi{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+    }
+
+    .panel-admi h1{
+        width: 50%;
+        align-items: center;
+        color: #000000;
+        text-align: center;
+        font-weight: bold;
+        background-color: #c2c2c2;
+        box-shadow: 0 0 10px rgba(0, 30, 2, 0.5); /* Sombra suave */
+        
+      
+    }
+    /* usuario actual */
+    .user-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .user-card-header {
+        background-color: #007bff;
+        color: white;
+        font-size: 1.25rem;
+        padding: 10px 20px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .user-card-body {
+        padding: 20px;
+    }
+
+    .user-info {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .user-info strong {
+        color: #007bff;
+    }
+
+    /* lista de imagenes */
+
+    .image-card-header {
+        background-color: #343a40;
+        color: white;
+        font-size: 1.25rem;
+        padding: 10px 20px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .image-card-body {
+        padding: 20px;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .thead-dark th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .btn {
+        margin: 2px;
+    }
+
+    /* formulario de registro de usuario */
+    .container.form {
+        width: 50%;
+        background-color: #f8f9fa; /* Cambia esto al color que prefieras */
+        padding: 20px;
+        margin-top: 100px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+    .form-carga {
+        width: 100%;
+        background-color: #f8f9fa; /* Fondo gris claro */
+        padding: 20px; /* Padding interior */
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra suave */
+        margin-top: 80px;
     }
     .login-box {
         width: 320px;
@@ -100,3 +266,4 @@
         margin-top: 5px; /* Espaciado superior entre el enlace y el texto adicional */
     }
 
+  
